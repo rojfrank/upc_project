@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'bcp/view'
+  post 'bcp/export'
+
+  get 'scotia/view'
+  post 'scotia/export'
+
+  get 'bbva/view'
+  post 'bbva/export'
+
   get 'welcome/index'
   get 'welcome', to: "welcome#index"
   get 'grupo/lista'

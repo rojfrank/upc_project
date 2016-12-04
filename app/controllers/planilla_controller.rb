@@ -1,5 +1,4 @@
 require 'csv'
-require 'planilla_helper.rb'
 
 class PlanillaController < ApplicationController
 	
@@ -18,7 +17,7 @@ class PlanillaController < ApplicationController
 	end
 
 	def import
-		myfile = params[:file]
+		myfile = params[:file] 
 		@csv_data = CSV.read(myfile.path , { headers: true, converters: :numeric})
 
 		banBCP = BancoBCP.new

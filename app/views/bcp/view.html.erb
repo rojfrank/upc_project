@@ -1,0 +1,31 @@
+<div>
+	<% if $global_BCP != nil and $global_BCP.size>0	 %>
+	<h1 align="center">BCP</h1>	
+	<table class="table-fill">
+		<thead>
+			<tr>
+				<th class="text-left">Id</th>
+				<th class="text-left">Tipo planilla</th>
+				<th class="text-left">Fecha de carga</th>
+				<th class="text-left">Total</th>
+				<th class="text-left">Generado</th>	
+				<th class="text-left"></th>					
+			</tr>
+		</thead>
+		<tbody class="table-hover">
+			<% $global_BCP.each do |banco| %>
+			<tr>
+				<td class="text-left"><%= banco.id %></td>	
+				<td class="text-left"><%= banco.planilla %></td>	
+				<td class="text-left"><%= banco.fecha %></td>	
+				<td class="text-left"><%= banco.total %></td>	
+				<td class="text-left"><%= banco.generado == true ? "Si" : "No" %></td>	
+				<td class="text-left">
+					<%= button_to 'Generar', {:controller => "bcp", :action => "export", :id => banco.id} , {class: "myButton"} %>					
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<% end %>
+</div>

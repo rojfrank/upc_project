@@ -1,21 +1,7 @@
+require 'date'
+
 module PlanillaHelper
 	def index		
-	end
-end
-
-class PlanillaBCP_Cabecera
-	attr_accessor :id, :nro_cuenta, :moneda, :total, :fecha, :concep, :checksum, :nro_registros, :valor1, :valor2, :valor3,
-								:detalle 
-	def initialize
-		
-	end
-end
-
-
-class PlanillaBCP_Detalle
-	attr_accessor :id, :nro_cuenta, :nombre, :moneda, :total, :concep, :valor1, :tipident, :nroident, :valor2, :valor3
-	def initialize		
-
 	end
 end
 
@@ -34,6 +20,11 @@ class	Banco
 		end
 		return suma
 	end
+
+	def cantidad_items
+		return @detalle.size
+	end
+
 end
 
 class BancoDetalle
@@ -45,19 +36,40 @@ end
 
 class	BancoBCP < Banco
 	def build
-		
+		cab = PlanillaBCP_Cabecera.new(self.total,self.planilla,1,self.cantidad_items)
+		i = 1
+		@detalle.each do |det|
+			detalle = PlanillaBCP_Detalle.new(i,det.nrocuenta,det.empleado,det.moneda,det.importe,det.glosa,det.dni)
+			cab.detalle.push(detalle)
+			i += 1
+		end
+		return cab.to_txt		
 	end
 end
 
 class	BancoScotia < Banco
 	def build
-		
+		cab = PlanillaScotia_Cabecera.new(self.total,self.planilla,1,self.cantidad_items)
+		i = 1
+		@detalle.each do |det|
+			detalle = PlanillaScotia_Detalle.new(i,det.nrocuenta,det.empleado,det.moneda,det.importe,det.glosa,det.dni)
+			cab.detalle.push(detalle)
+			i += 1
+		end
+		return cab.to_txt			
 	end
 end
 
 class	BancoBBVA < Banco
 	def build
-		
+		cab = PlanillaBBVA_Cabecera.new(self.total,self.planilla,1,self.cantidad_items)
+		i = 1
+		@detalle.each do |det|
+			detalle = PlanillaBBVA_Detalle.new(i,det.nrocuenta,det.empleado,det.moneda,det.importe,det.glosa,det.dni)
+			cab.detalle.push(detalle)
+			i += 1
+		end
+		return cab.to_txt			
 	end
 end
 

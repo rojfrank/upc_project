@@ -10,31 +10,29 @@
 </head>
 <body>
 	<header>
-		<nav class="be-red white large-padding">
-			<ul class="no-list row center-xs middle-xs">
-				<li class="col-md">
-					<h1 class="no-margin" id="logo">Sysde</h1>	
+		<div class="wrapper">
+			<h1 class="brand">Sysde</h1>
+			<ul class="main-nav">
+				<li> 
+					<%= link_to "Inicio", "/welcome/index" %>					
 				</li>
-				<li class="col-md">
-					<%= link_to "Inicio", "/welcome/index" %>
+				<li> 
+					<%= link_to "Grupo", "/grupo/lista" %>					
 				</li>
-				<li class="col-md">
-					<%= link_to "Grupo", "/grupo/lista" %>
-				</li>
-				<li class="col-md">
+				<li>
 					<%= link_to "Importar Planilla", "/planilla" %>
 				</li>
-				<li class="col-md">
-					Bancos
-					<ul>
-						<li><%= link_to "BCP", "/banco/bcp" %></li>
-						<li><%= link_to "ScotiaBank", "/banco/scotia" %></li>
-						<li><%= link_to "BBVA", "/banco/bbva" %></li>
+				<li>
+					<a>Bancos</a>
+					<ul class="sub-menu" style=" color: black">
+						<li><%= link_to "BCP", "/bcp/view" %></li>
+						<li><%= link_to "Scotiabank", "/scotia/view" %></li>
+						<li><%= link_to "BBVA", "/bbva/view" %></li>
 					</ul>
 				</li>
 			</ul>
-		</nav>
-	</header>
+		</div>
+	</header>	
 
 	<%= yield %>
 
