@@ -23,15 +23,12 @@ class PlanillaBCP_Cabecera
 	def to_txt
 		row = id.to_s + '|' + nro_cuenta.to_s + '|' + moneda.to_s + '|' + total.to_s + '|' + fecha.to_s + '|' + 
 			concep.to_s + '|' + checksum.to_s + '|' + nro_registros.to_s + '|' + valor1.to_s + '|' + valor2.to_s + '|' + valor3.to_s
-
 		@detalle.each do |det|
 			row += "\n" + det.to_txt
 		end 
-		
 		return row
 	end
 end
-
 
 class PlanillaBCP_Detalle
 	attr_accessor :id, :nro_cuenta, :nombre, :moneda, :total, :concep, :valor1, :tipident, :nroident, :valor2, :valor3
@@ -53,5 +50,4 @@ class PlanillaBCP_Detalle
 		return id.to_s + '|' + nro_cuenta.to_s + '|' + nombre.to_s + '|' + moneda.to_s + '|' + total.to_s + '|' + 
 			concep.to_s + '|' + valor1.to_s + '|' + tipident.to_s + '|' + nroident.to_s + '|' + valor2.to_s + '|' + valor3.to_s
 	end
-
 end

@@ -24,7 +24,6 @@ class	Banco
 	def cantidad_items
 		return @detalle.size
 	end
-
 end
 
 class BancoDetalle
@@ -34,6 +33,7 @@ class BancoDetalle
 	end
 end
 
+#Clases de bancos
 class	BancoBCP < Banco
 	def build
 		cab = PlanillaBCP_Cabecera.new(self.total,self.planilla,1,self.cantidad_items)
