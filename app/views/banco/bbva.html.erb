@@ -1,0 +1,29 @@
+<div>
+	<% if $global_BBVA != nil and $global_BBVA.size>0	 %>
+	<h2>BBVA</h2>	
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Tipo planilla</th>
+				<th>Fecha de carga</th>
+				<th>Total</th>
+				<th>Generado</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% $global_BBVA.each do |banco| %>
+			<tr>
+				<td><%= banco.id %></td>	
+				<td><%= banco.planilla %></td>	
+				<td><%= banco.fecha %></td>	
+				<td><%= banco.total %></td>	
+				<td><%= banco.generado == true ? "Si" : "No" %></td>	
+				<td><%= button_tag "Generar" , {:action => :bbvaExport, :id => banco.id} %></td>
+			</tr>
+			<% end %>	
+		</tbody>
+	</table>
+	<% end %>
+</div>

@@ -1,0 +1,27 @@
+<div>
+	<% if $global_BCP != nil and $global_BCP.size>0	 %>
+	<h2>BCP</h2>	
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Tipo planilla</th>
+				<th>Fecha de carga</th>
+				<th>Total</th>
+				<th>Generado</th>						
+			</tr>
+		</thead>
+		<tbody>
+			<% $global_BCP.each do |banco| %>
+			<tr>
+				<td><%= banco.id %></td>	
+				<td><%= banco.planilla %></td>	
+				<td><%= banco.fecha %></td>	
+				<td><%= banco.total %></td>	
+				<td><%= banco.generado == true ? "Si" : "No" %></td>	
+			</tr>
+			<% end %>	
+		</tbody>
+	</table>
+	<% end %>
+</div>

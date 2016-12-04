@@ -1,9 +1,11 @@
-<h1>Planilla de haberes</h1>
-<separator>
+<h1 align="center">Planilla de haberes</h1>
+<div align="center">
 	<h5>Importar archivo CSV, con información de personal:</h5>
-<%= form_tag({:action => :import}, multipart: true) do %>
-  <%= file_field_tag :file , :required => true %>
-  <div>
-  	<%= submit_tag "Generar" , data: { confirm: "¿Está seguro de generar archivo?" } %>
+	<%= form_tag({:action => :import}, multipart: true) do %>
+	<%= file_field_tag :file , :required => true %>
+	<div>
+		<%= submit_tag "Cargar" , data: { confirm: "¿Está seguro de generar archivo?" } %>
 	</div>
-<% end %>
+	<% end %>
+</div>
+

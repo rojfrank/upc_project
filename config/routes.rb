@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   get 'grupo/lista'
   get 'planilla', to: "planilla#index"
   post 'planilla/import'
+  get 'banco/bcp'
+  get 'banco/scotia'
+  get 'banco/bbva'
+  post 'banco/bcp_export'
+  post 'banco/scotia_export'
+  post 'banco/bbva_export'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
